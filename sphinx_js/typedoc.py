@@ -352,7 +352,7 @@ def typedoc_output(abs_source_paths, sphinx_conf_dir, config_path):
         try:
             runme = command.make()
             print("===================")
-            print(runme)
+            print(' '.join(runme))
             print("===================")
             subprocess.call(runme)
         except OSError as exc:
