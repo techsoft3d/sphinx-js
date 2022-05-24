@@ -350,10 +350,11 @@ def typedoc_output(abs_source_paths, sphinx_conf_dir, config_path):
     with NamedTemporaryFile(mode='w+b', delete=False) as temp:
         command.add('--json', temp.name, *abs_source_paths)
         try:
+            runme = command.make()
             print("===================")
-            print(command)
+            print(runme)
             print("===================")
-            subprocess.call(command.make())
+            subprocess.call(runme)
         except OSError as exc:
             if exc.errno == ENOENT:
                 raise SphinxError('%s was not found. Install it using "npm install -g typedoc".' % command.program)
