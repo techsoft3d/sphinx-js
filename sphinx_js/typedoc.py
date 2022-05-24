@@ -347,7 +347,7 @@ def typedoc_output(abs_source_paths, sphinx_conf_dir, config_path):
     if config_path:
         command.add('--tsconfig', normpath(join(sphinx_conf_dir, config_path)))
 
-    with NamedTemporaryFile(mode='w+b') as temp:
+    with NamedTemporaryFile(mode='w+b', delete=False) as temp:
         command.add('--json', temp.name, *abs_source_paths)
         try:
             subprocess.call(command.make())
